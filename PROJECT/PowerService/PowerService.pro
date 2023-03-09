@@ -1,7 +1,6 @@
 TARGET_SOURCE = $${PWD}/../../SOURCE
 TARGET_RESOURCE = $${PWD}/../../RESOURCES
-SYSTEM_DOC = $${PWD}/../../../
-PROJLIB = $${PWD}/../../../PROJLIB
+SHARED = $${PWD}/../../MCPU_SHARED_MODULES/MODULES
 include($${PWD}/../PowerService.pri)
 
 

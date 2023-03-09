@@ -28,12 +28,12 @@ DISTFILES +=
 
 SOURCES += \
     $${TARGET_SOURCE}/main.cpp \
-    $${PROJLIB}/APPLICATION_INTERFACE/applicationInterface.cpp \
-    $${PROJLIB}/CAN_CLIENT/canclient.cpp \
-    $${PROJLIB}/APPLOG/applog.cpp \
-    $${PROJLIB}/CONFIGFILE/configfile.cpp \
-    $${TARGET_SOURCE}/INTERFACE/interface.cpp \
-    $${TARGET_SOURCE}/PROTOCOL/can_device_protocol.cpp \
+    $${SHARED}/APPLICATION_INTERFACE/applicationInterface.cpp \
+    $${SHARED}/CAN_CLIENT/canclient.cpp \
+    $${SHARED}/APPLOG/applog.cpp \
+    $${SHARED}/CONFIGFILE/configfile.cpp \
+    $${SHARED}/CAN_DEVICE_PROTOCOL/can_device_protocol.cpp \
+    $${TARGET_SOURCE}/INTERFACE/interface.cpp \    
     $${TARGET_SOURCE}/PROTOCOL/device_protocol.cpp \
     $${TARGET_SOURCE}/WINDOW/window.cpp \
     $${TARGET_SOURCE}/CONFIGURATION/boardconfig.cpp \
@@ -41,12 +41,12 @@ SOURCES += \
 
 HEADERS += \
     $${TARGET_SOURCE}/application.h \
-    $${PROJLIB}/APPLICATION_INTERFACE/applicationInterface.h \
-    $${PROJLIB}/CAN_CLIENT/canclient.h \
-    $${PROJLIB}/APPLOG/applog.h \
-    $${PROJLIB}/CONFIGFILE/configfile.h \
-    $${TARGET_SOURCE}/INTERFACE/interface.h \
-    $${TARGET_SOURCE}/PROTOCOL/can_device_protocol.h \
+    $${SHARED}/APPLICATION_INTERFACE/applicationInterface.h \
+    $${SHARED}/CAN_CLIENT/canclient.h \
+    $${SHARED}/APPLOG/applog.h \
+    $${SHARED}/CONFIGFILE/configfile.h \
+    $${SHARED}/CAN_DEVICE_PROTOCOL/can_device_protocol.h \
+    $${TARGET_SOURCE}/INTERFACE/interface.h \    
     $${TARGET_SOURCE}/PROTOCOL/device_protocol.h \
     $${TARGET_SOURCE}/WINDOW/window.h \
     $${TARGET_SOURCE}/CONFIGURATION/boardconfig.h \
@@ -55,10 +55,11 @@ HEADERS += \
 
 # Aggiunge tutti i path di progetto
 INCLUDEPATH += \
-    $${PROJLIB}/APPLICATION_INTERFACE \
-    $${PROJLIB}/CAN_CLIENT \
-    $${PROJLIB}/APPLOG \
-    $${PROJLIB}/CONFIGFILE \
+    $${SHARED}/APPLICATION_INTERFACE \
+    $${SHARED}/CAN_CLIENT \
+    $${SHARED}/APPLOG \
+    $${SHARED}/CONFIGFILE \
+    $${SHARED}/CAN_DEVICE_PROTOCOL \
     $${TARGET_SOURCE} \
     $${TARGET_SOURCE}/INTERFACE \
     $${TARGET_SOURCE}/PROTOCOL \
