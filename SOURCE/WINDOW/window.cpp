@@ -19,6 +19,8 @@ debugWindow::debugWindow(QWidget *parent)
 
     connect(ui->softPoffButton, SIGNAL(pressed()), this, SLOT(onSoftPoffButton()), Qt::UniqueConnection);
     connect(ui->abortButton, SIGNAL(pressed()), this, SLOT(onAbortButton()), Qt::UniqueConnection);
+    connect(ui->armButton, SIGNAL(pressed()), this, SLOT(onArmButton()), Qt::UniqueConnection);
+    connect(ui->bootloaderButton, SIGNAL(pressed()), this, SLOT(onBootloaderButton()), Qt::UniqueConnection);
 
     pollingTimer  = startTimer(500);
 
@@ -73,12 +75,16 @@ void debugWindow::on_logEnableCheck_stateChanged(int arg1)
 
     if((arg1 == Qt::Checked) && (!connected)) {
         connected = true;
-        connect(PROTOCOL, SIGNAL(dataReceivedFromCan(ushort,QByteArray)), this, SLOT(rxFromCan(ushort,QByteArray)), Qt::QueuedConnection);
-        connect(PROTOCOL, SIGNAL(txToCan(ushort,QByteArray )), this, SLOT(txToCan(ushort,QByteArray)), Qt::QueuedConnection);
+        connect(PROTOCOL, SIGNAL( dataReceivedFromDeviceCan(ushort,QByteArray)), this, SLOT(rxFromCan(ushort,QByteArray)), Qt::QueuedConnection);
+        connect(PROTOCOL, SIGNAL( dataReceivedFromBootloaderCan(ushort,QByteArray)), this, SLOT(rxFromCan(ushort,QByteArray)), Qt::QueuedConnection);
+        connect(PROTOCOL, SIGNAL(txToDeviceCan(ushort,QByteArray )), this, SLOT(txToCan(ushort,QByteArray)), Qt::QueuedConnection);
+        connect(PROTOCOL, SIGNAL(txToBootloader(ushort,QByteArray )), this, SLOT(txToCan(ushort,QByteArray)), Qt::QueuedConnection);
     }else if((arg1 == Qt::Unchecked) && (connected)) {
         connected = false;
-        disconnect(PROTOCOL, SIGNAL(dataReceivedFromCan(ushort,QByteArray )), this, SLOT(rxFromCan(ushort,QByteArray)));
-        disconnect(PROTOCOL, SIGNAL(txToCan(ushort,QByteArray)), this, SLOT(txToCan(ushort,QByteArray)));
+        disconnect(PROTOCOL, SIGNAL( dataReceivedFromDeviceCan(ushort,QByteArray)), this, SLOT(rxFromCan(ushort,QByteArray)));
+        disconnect(PROTOCOL, SIGNAL( dataReceivedFromBootloaderCan(ushort,QByteArray)), this, SLOT(rxFromCan(ushort,QByteArray)));
+        disconnect(PROTOCOL, SIGNAL(txToDeviceCan(ushort,QByteArray )), this, SLOT(txToCan(ushort,QByteArray)));
+        disconnect(PROTOCOL, SIGNAL(txToBootloader(ushort,QByteArray )), this, SLOT(txToCan(ushort,QByteArray)));
     }
 }
 
@@ -213,7 +219,15 @@ void debugWindow::updateStatus(void){
     ui->status3_3->setChecked((PROTOCOL->getStatus(0).d[3] & 0x8));
 
     ui->batt1V->setText(QString("%1 (V)").arg((float) PROTOCOL->getStatus(1).d[0] * 0.1) );
-    ui->batt2V->setText(QString("%1 (V)").arg((float) PROTOCOL->getStatus(1).d[0] * 0.1) );
+    ui->batt2V->setText(QString("%1 (V)").arg((float) PROTOCOL->getStatus(1).d[1] * 0.1) );
+
+
+    int16_t pot = (((ushort) PROTOCOL->getStatus(2).d[0] + (ushort) PROTOCOL->getStatus(2).d[1] * 256));
+    int16_t pos = (((ushort) PROTOCOL->getStatus(2).d[2] + (ushort) PROTOCOL->getStatus(2).d[3] * 256));
+    ui->armPot->setText(QString("%1").arg(pot));
+    ui->armPos->setText(QString("%1").arg(pos));
+
+
 }
 
 void debugWindow::onSoftPoffButton(void){
@@ -222,3 +236,16 @@ void debugWindow::onSoftPoffButton(void){
 void debugWindow::onAbortButton(void){
     PROTOCOL->requestAbort();
 }
+void debugWindow::onArmButton(void){
+    static int16_t angolo = 9000;
+
+    if(angolo == 9000) angolo = -9000;
+    else angolo = 9000;
+
+    PROTOCOL->requestArm(angolo);
+}
+
+void debugWindow::onBootloaderButton(void){
+    PROTOCOL->requestBootloaderActivation();
+}
+

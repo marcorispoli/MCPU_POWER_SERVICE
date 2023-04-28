@@ -3,6 +3,7 @@
 
 #include "QObject"
 #include "can_device_protocol.h"
+#include "can_bootloader_protocol.h"
 
 /*!
  * \defgroup  deviceModule Device Protocol implementation
@@ -21,14 +22,17 @@ public:
 
 
     typedef enum{
-        _WORKFLOW_INITIALIZATION = 0,
-        _WORKFLOW_CONFIGURATION,
+        _WORKFLOW_NONE = 0,
+        _WORKFLOW_BOOTINIT,
+        _WORKFLOW_APPINIT,
         _WORKFLOW_IDLE,
+        _WORKFLOW_BOOTLOADER,
     }PROTOCOL_WORKFLOW_e;
 
     typedef enum{
         STATUS_SYSTEM = 0,
         STATUS_BATTERY,
+        STATUS_ARM,
         STATUS_LEN
     }PROTOCOL_STATUS_ENUM_e;
 
@@ -53,19 +57,43 @@ public:
     typedef enum{
         EXECUTE_ABORT = 0,
         EXECUTE_POWER_ON_OFF,
-    }PROTOCOL_COOMMANDS_ENUM_e;
+        ACTIVATE_MOTORS,
+        LAST_PROTOCOL_COMMAND
+    }PROTOCOL_COMMANDS_ENUM_e;
+
+    typedef enum{
+        ACTIVATE_BOOTLOADER = LAST_PROTOCOL_COMMAND,
+
+    }BOOTLOADERL_COMMANDS_ENUM_e;
+
+    typedef enum{
+        NO_COMMAND = 0,
+        ACTIVATE_ARM,
+        ACTIVATE_BODY,
+        ACTIVATE_LIFT,
+        ACTIVATE_ARM_LIFT
+    }PROTOCOL_MOTORS_COMMAND_ENUM_e;
 
 
+    inline void requestBootloaderActivation(void) {if(bootloaderPresent) execCmd = ACTIVATE_BOOTLOADER;}
     inline void requestSoftPowerOff(void){execCmd = EXECUTE_POWER_ON_OFF;};
     inline void requestAbort(void){abortCmd = true;};
+    void requestArm(int16_t cAng){
+        execCmd = ACTIVATE_MOTORS;
+        execParam[0] = ACTIVATE_ARM;
+        execParam[1] = (uint16_t) cAng & 0xFF;
+        execParam[2] = (uint16_t) cAng >> 8;
+        execParam[3] = 0;
 
-    inline canDeviceProtocolFrame::CAN_REGISTER_t getParam(uint8_t data){return paramRegisters[data];};
-    inline canDeviceProtocolFrame::CAN_REGISTER_t getData(uint8_t data){return dataRegisters[data];};
-    inline canDeviceProtocolFrame::CAN_REGISTER_t getStatus(uint8_t data){return statusRegisters[data];};
+    };
+
+    inline canDeviceProtocolFrame::CAN_REGISTER_t getParam(uint8_t data){return deviceParamRegisters[data];};
+    inline canDeviceProtocolFrame::CAN_REGISTER_t getData(uint8_t data){return deviceDataRegisters[data];};
+    inline canDeviceProtocolFrame::CAN_REGISTER_t getStatus(uint8_t data){return deviceStatusRegisters[data];};
     void setData(uint8_t idx, uint8_t data, uint8_t mask, bool stat){
-        uchar b = dataRegisters[idx].d[data] &=~ mask;
-        if(stat) dataRegisters[idx].d[data] = b | mask;
-        else dataRegisters[idx].d[data] = b;
+        uchar b = deviceDataRegisters[idx].d[data] &=~ mask;
+        if(stat) deviceDataRegisters[idx].d[data] = b | mask;
+        else deviceDataRegisters[idx].d[data] = b;
     };
 
 
@@ -77,8 +105,10 @@ public slots:
 
 private slots:
 
-    void workflowINITIALIZATION(void);
+    void workflowAPPINIT(void);
+    void workflowBOOTINIT(void);
     void workflowIDLE(void);
+    void workflowBOOTLOADER(void);
 
 public:
     uchar execCmd;
@@ -94,6 +124,7 @@ private:
     uchar subWorkflow;
     uchar sequence;
     bool  rxOk;
+    bool bootloaderPresent;
 
 
 

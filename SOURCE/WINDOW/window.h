@@ -48,6 +48,8 @@ public slots:
     void onLogClearButton(void);
     void onSoftPoffButton(void);
     void onAbortButton(void);
+    void onArmButton(void);
+    void onBootloaderButton(void);
 
     void assignData(void);
 

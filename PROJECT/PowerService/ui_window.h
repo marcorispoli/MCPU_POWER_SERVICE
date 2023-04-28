@@ -108,17 +108,23 @@ public:
     QLineEdit *batt2V;
     QLabel *label_23;
     QLabel *label_25;
+    QLabel *label_27;
+    QLineEdit *armPot;
+    QLineEdit *armPos;
+    QLabel *label_28;
+    QPushButton *armButton;
+    QPushButton *bootloaderButton;
 
     void setupUi(QWidget *debugWindow)
     {
         if (debugWindow->objectName().isEmpty())
             debugWindow->setObjectName(QString::fromUtf8("debugWindow"));
-        debugWindow->resize(800, 600);
+        debugWindow->resize(923, 600);
         debugWindow->setStyleSheet(QString::fromUtf8("\n"
 "background-color: rgb(85, 170, 255);"));
         mainFrame = new QFrame(debugWindow);
         mainFrame->setObjectName(QString::fromUtf8("mainFrame"));
-        mainFrame->setGeometry(QRect(0, 0, 800, 600));
+        mainFrame->setGeometry(QRect(0, 0, 931, 600));
         QFont font;
         font.setPointSize(20);
         font.setBold(true);
@@ -520,7 +526,7 @@ public:
         status2_6->setAutoExclusive(false);
         softPoffButton = new QPushButton(mainFrame);
         softPoffButton->setObjectName(QString::fromUtf8("softPoffButton"));
-        softPoffButton->setGeometry(QRect(670, 130, 101, 31));
+        softPoffButton->setGeometry(QRect(640, 300, 101, 31));
         softPoffButton->setFont(font2);
         softPoffButton->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 0, 127);\n"
 "color: rgb(255, 255, 255);\n"
@@ -528,7 +534,7 @@ public:
 ""));
         abortButton = new QPushButton(mainFrame);
         abortButton->setObjectName(QString::fromUtf8("abortButton"));
-        abortButton->setGeometry(QRect(670, 170, 101, 31));
+        abortButton->setGeometry(QRect(520, 300, 101, 31));
         abortButton->setFont(font2);
         abortButton->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 0, 127);\n"
 "color: rgb(255, 255, 255);\n"
@@ -536,7 +542,7 @@ public:
 ""));
         frame_2 = new QFrame(mainFrame);
         frame_2->setObjectName(QString::fromUtf8("frame_2"));
-        frame_2->setGeometry(QRect(650, 30, 131, 91));
+        frame_2->setGeometry(QRect(650, 30, 131, 181));
         frame_2->setFrameShape(QFrame::StyledPanel);
         frame_2->setFrameShadow(QFrame::Raised);
         batt1V = new QLineEdit(frame_2);
@@ -565,6 +571,48 @@ public:
 "border-width: 0px;\n"
 ""));
         label_25->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        label_27 = new QLabel(frame_2);
+        label_27->setObjectName(QString::fromUtf8("label_27"));
+        label_27->setGeometry(QRect(10, 80, 41, 20));
+        label_27->setStyleSheet(QString::fromUtf8("\n"
+"color: rgb(255, 255, 255);\n"
+"border-width: 0px;\n"
+""));
+        label_27->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        armPot = new QLineEdit(frame_2);
+        armPot->setObjectName(QString::fromUtf8("armPot"));
+        armPot->setGeometry(QRect(60, 80, 61, 21));
+        armPot->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 170, 0);\n"
+"color: rgb(0, 0, 0);"));
+        armPos = new QLineEdit(frame_2);
+        armPos->setObjectName(QString::fromUtf8("armPos"));
+        armPos->setGeometry(QRect(60, 100, 61, 21));
+        armPos->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 170, 0);\n"
+"color: rgb(0, 0, 0);"));
+        label_28 = new QLabel(frame_2);
+        label_28->setObjectName(QString::fromUtf8("label_28"));
+        label_28->setGeometry(QRect(10, 100, 41, 20));
+        label_28->setStyleSheet(QString::fromUtf8("\n"
+"color: rgb(255, 255, 255);\n"
+"border-width: 0px;\n"
+""));
+        label_28->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        armButton = new QPushButton(mainFrame);
+        armButton->setObjectName(QString::fromUtf8("armButton"));
+        armButton->setGeometry(QRect(660, 220, 101, 31));
+        armButton->setFont(font2);
+        armButton->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 0, 127);\n"
+"color: rgb(255, 255, 255);\n"
+"border-width: 0px;\n"
+""));
+        bootloaderButton = new QPushButton(mainFrame);
+        bootloaderButton->setObjectName(QString::fromUtf8("bootloaderButton"));
+        bootloaderButton->setGeometry(QRect(800, 40, 111, 31));
+        bootloaderButton->setFont(font2);
+        bootloaderButton->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 0, 127);\n"
+"color: rgb(255, 255, 255);\n"
+"border-width: 0px;\n"
+""));
 
         retranslateUi(debugWindow);
 
@@ -653,6 +701,12 @@ public:
         batt2V->setText(QCoreApplication::translate("debugWindow", "255", nullptr));
         label_23->setText(QCoreApplication::translate("debugWindow", "BATT 1", nullptr));
         label_25->setText(QCoreApplication::translate("debugWindow", "BATT 2", nullptr));
+        label_27->setText(QCoreApplication::translate("debugWindow", "POT", nullptr));
+        armPot->setText(QCoreApplication::translate("debugWindow", "255", nullptr));
+        armPos->setText(QCoreApplication::translate("debugWindow", "POS", nullptr));
+        label_28->setText(QCoreApplication::translate("debugWindow", "POS", nullptr));
+        armButton->setText(QCoreApplication::translate("debugWindow", "ARM", nullptr));
+        bootloaderButton->setText(QCoreApplication::translate("debugWindow", "BOOTLOADER", nullptr));
     } // retranslateUi
 
 };

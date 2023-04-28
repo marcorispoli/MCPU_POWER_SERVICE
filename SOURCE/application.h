@@ -63,7 +63,7 @@ namespace Application
    static const unsigned short  CAN_PORT = 10001; //!< Can Client Server Port
    static const char*           IP_INTERFACE_ADDRESS = "127.0.0.1"; //!< Motor Interface IP address
    static const unsigned short  INTERFACE_PORT = 10004; //!< Power Service Interface Port
-   static const unsigned char   DEVICE_ID = 0x11; //!< Power Service Can Device ID
+   static const unsigned char   DEVICE_ID = 0x1; //!< Power Service Can Device ID
 }
 
 
