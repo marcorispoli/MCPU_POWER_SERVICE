@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'applicationInterface.h'
 **
-** Created by: The Qt Meta Object Compiler version 68 (Qt 6.2.2)
+** Created by: The Qt Meta Object Compiler version 68 (Qt 6.2.4)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -13,7 +13,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'applicationInterface.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 68
-#error "This file was generated using the moc from 6.2.2. It"
+#error "This file was generated using the moc from 6.2.4. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -92,12 +92,12 @@ void SocketItem::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         auto *_t = static_cast<SocketItem *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->itemDisconnected((*reinterpret_cast< ushort(*)>(_a[1]))); break;
-        case 1: _t->receivedCommandSgn((*reinterpret_cast< ushort(*)>(_a[1])),(*reinterpret_cast< QByteArray(*)>(_a[2]))); break;
+        case 0: _t->itemDisconnected((*reinterpret_cast< std::add_pointer_t<ushort>>(_a[1]))); break;
+        case 1: _t->receivedCommandSgn((*reinterpret_cast< std::add_pointer_t<ushort>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QByteArray>>(_a[2]))); break;
         case 2: _t->disconnected(); break;
-        case 3: _t->socketError((*reinterpret_cast< QAbstractSocket::SocketError(*)>(_a[1]))); break;
+        case 3: _t->socketError((*reinterpret_cast< std::add_pointer_t<QAbstractSocket::SocketError>>(_a[1]))); break;
         case 4: _t->socketRxData(); break;
-        case 5: _t->socketTxData((*reinterpret_cast< QByteArray(*)>(_a[1]))); break;
+        case 5: _t->socketTxData((*reinterpret_cast< std::add_pointer_t<QByteArray>>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -247,9 +247,9 @@ void applicationInterface::qt_static_metacall(QObject *_o, QMetaObject::Call _c,
         auto *_t = static_cast<applicationInterface *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->txFrame((*reinterpret_cast< QByteArray(*)>(_a[1]))); break;
-        case 1: _t->receivedCommandSlot((*reinterpret_cast< ushort(*)>(_a[1])),(*reinterpret_cast< QByteArray(*)>(_a[2]))); break;
-        case 2: _t->disconnected((*reinterpret_cast< ushort(*)>(_a[1]))); break;
+        case 0: _t->txFrame((*reinterpret_cast< std::add_pointer_t<QByteArray>>(_a[1]))); break;
+        case 1: _t->receivedCommandSlot((*reinterpret_cast< std::add_pointer_t<ushort>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QByteArray>>(_a[2]))); break;
+        case 2: _t->disconnected((*reinterpret_cast< std::add_pointer_t<ushort>>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
