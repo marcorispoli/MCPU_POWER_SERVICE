@@ -67,7 +67,7 @@ private slots:
 
 
 private:
-
+    uint GetStatus( QList<QString>* answer);
     // Protocol Interface Events
 
     // Protocol Interface commands

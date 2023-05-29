@@ -27,6 +27,7 @@ int main(int argc, char *argv[])
 
     // Open the application config file
     CONFIG = new boardConfig();
+    SYSCONFIG = new sysConfig();
 
     // Initialize the WINDOW to nullptr so that in case of Operating mode
     // the application skips the WINDOW callbacks
