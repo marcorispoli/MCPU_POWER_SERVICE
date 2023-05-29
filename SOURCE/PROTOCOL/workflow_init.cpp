@@ -12,11 +12,12 @@ void deviceProtocol::workflowBOOTINIT(void){
      QString stringa;
      workflow = _WORKFLOW_BOOTINIT;
 
-    // Waiting for the answer
+     // Waiting for the answer
     if(isBootloaderCommunicationPending()){
         QTimer::singleShot(1,this, SLOT(workflowBOOTINIT()));
         return;
     }
+
 
     switch(subWorkflow){
         case _WI_GET_INFO_REQ_0: // Get info from the Target Bootloader
@@ -24,11 +25,13 @@ void deviceProtocol::workflowBOOTINIT(void){
                 QTimer::singleShot(100,this, SLOT(workflowBOOTINIT()));
                 return;
             }
-
+QTimer::singleShot(1,this, SLOT(workflowBOOTINIT()));
+return;
             subWorkflow++;
             break;
 
         case _WI_GET_INFO_REQ_1:
+
             if(!isBootloaderCommunicationOk()){
                 qDebug() << "BOOTLOADER FRAME TIMEOUT ";
                 subWorkflow--;

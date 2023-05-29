@@ -9,7 +9,7 @@
  * - port: bounding port
  *
  */
-Interface::Interface(void):applicationInterface(SYSCONFIG->getParam<QString>(SYS_LOCALHOST_PARAM,0),SYSCONFIG->getParam<int>(SYS_POWERSERVICE_PORT_PARAM,0))
+Interface::Interface(void):applicationInterface(SYSCONFIG->getParam<QString>(SYS_POWERSERVICE_PROCESS_PARAM,SYS_PROCESS_IP),SYSCONFIG->getParam<int>(SYS_POWERSERVICE_PROCESS_PARAM,SYS_PROCESS_PORT))
 {
 
 }

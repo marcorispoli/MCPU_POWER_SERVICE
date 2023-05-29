@@ -23,7 +23,8 @@ int main(int argc, char *argv[])
 {
 
     QApplication a(argc, argv);
-    appLog(argc, argv, "C:/OEM/Logs/GANTRY/PowerService.log", debugWindow::debugMessageHandler);
+    appLog(argc, argv, "C:\\OEM\\Gantry\\Log\\PowerService.log", debugWindow::debugMessageHandler);
+
 
     // Open the application config file
     CONFIG = new boardConfig();

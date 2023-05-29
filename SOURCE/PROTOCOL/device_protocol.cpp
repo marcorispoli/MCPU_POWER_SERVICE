@@ -24,6 +24,7 @@ deviceProtocol::deviceProtocol(void):canDeviceProtocol(Application::DEVICE_ID, A
     workflow = _WORKFLOW_NONE;
     subWorkflow = 0;
     QTimer::singleShot(100,this, SLOT(workflowBOOTINIT()));
+
 }
 
 
