@@ -42,11 +42,12 @@ int main(int argc, char *argv[])
 
     // Open the server for the external commands
     INTERFACE = new Interface();
-    INTERFACE->Start();
 
     // Open the communication protocol
     PROTOCOL = new deviceProtocol();
 
+    // Start communication with the Master
+    INTERFACE->Start();
     return a.exec();
 }
 

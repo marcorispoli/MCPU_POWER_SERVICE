@@ -20,7 +20,7 @@ public:
     explicit deviceProtocol();
     ~deviceProtocol(){};
 
-
+    // Workflow handling
     typedef enum{
         _WORKFLOW_NONE = 0,
         _WORKFLOW_BOOTINIT,
@@ -28,6 +28,10 @@ public:
         _WORKFLOW_IDLE,
         _WORKFLOW_BOOTLOADER,
     }PROTOCOL_WORKFLOW_e;
+
+    void connectDevice(void){
+
+    }
 
     typedef enum{
         STATUS_SYSTEM = 0,
@@ -75,6 +79,7 @@ public:
     }PROTOCOL_MOTORS_COMMAND_ENUM_e;
 
 
+    // Protocol commands
     inline void requestBootloaderActivation(void) {if(bootloaderPresent) execCmd = ACTIVATE_BOOTLOADER;}
     inline void requestSoftPowerOff(void){execCmd = EXECUTE_POWER_ON_OFF;};
     inline void requestAbort(void){abortCmd = true;};

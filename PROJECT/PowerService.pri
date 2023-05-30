@@ -32,7 +32,6 @@ SOURCES += \
     $${SHARED}/CAN_CLIENT/canclient.cpp \
     $${SHARED}/APPLOG/applog.cpp \
     $${SHARED}/CONFIGFILE/configfile.cpp \
-    $${SHARED}/CONFIGFILE/sysconfig.cpp \
     $${SHARED}/CAN_DEVICE_PROTOCOL/can_device_protocol.cpp \
     $${SHARED}/CAN_DEVICE_PROTOCOL/can_bootloader_protocol.cpp \
     $${TARGET_SOURCE}/INTERFACE/interface.cpp \    

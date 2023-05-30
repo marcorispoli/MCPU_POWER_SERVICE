@@ -62,6 +62,7 @@ public:
 
     uint handleReceivedCommand(QList<QString>* frame, QList<QString>* answer); //!< Reimplement the handler for the received Commmands
 
+    inline void EVENT_InitCompleted(void){sendEvent("EVENT_InitCompleted");}
 
 private slots:
 

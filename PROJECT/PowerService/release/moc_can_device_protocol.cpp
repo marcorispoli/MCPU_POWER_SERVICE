@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_canDeviceProtocol_t {
-    const uint offsetsAndSize[16];
-    char stringdata0[101];
+    const uint offsetsAndSize[20];
+    char stringdata0[134];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_canDeviceProtocol_t, stringdata0) + ofs), len 
@@ -36,12 +36,15 @@ QT_MOC_LITERAL(33, 5), // "canId"
 QT_MOC_LITERAL(39, 4), // "data"
 QT_MOC_LITERAL(44, 25), // "dataReceivedFromDeviceCan"
 QT_MOC_LITERAL(70, 15), // "rxFromDeviceCan"
-QT_MOC_LITERAL(86, 14) // "deviceTmoEvent"
+QT_MOC_LITERAL(86, 14), // "deviceTmoEvent"
+QT_MOC_LITERAL(101, 25), // "canDriverConnectionStatus"
+QT_MOC_LITERAL(127, 6) // "status"
 
     },
     "canDeviceProtocol\0txToDeviceCan\0\0canId\0"
     "data\0dataReceivedFromDeviceCan\0"
-    "rxFromDeviceCan\0deviceTmoEvent"
+    "rxFromDeviceCan\0deviceTmoEvent\0"
+    "canDriverConnectionStatus\0status"
 };
 #undef QT_MOC_LITERAL
 
@@ -51,7 +54,7 @@ static const uint qt_meta_data_canDeviceProtocol[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-       4,   14, // methods
+       5,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -59,12 +62,13 @@ static const uint qt_meta_data_canDeviceProtocol[] = {
        2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    2,   38,    2, 0x06,    1 /* Public */,
-       5,    2,   43,    2, 0x06,    4 /* Public */,
+       1,    2,   44,    2, 0x06,    1 /* Public */,
+       5,    2,   49,    2, 0x06,    4 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       6,    2,   48,    2, 0x08,    7 /* Private */,
-       7,    0,   53,    2, 0x08,   10 /* Private */,
+       6,    2,   54,    2, 0x08,    7 /* Private */,
+       7,    0,   59,    2, 0x08,   10 /* Private */,
+       8,    1,   60,    2, 0x08,   11 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::UShort, QMetaType::QByteArray,    3,    4,
@@ -73,6 +77,7 @@ static const uint qt_meta_data_canDeviceProtocol[] = {
  // slots: parameters
     QMetaType::Void, QMetaType::UShort, QMetaType::QByteArray,    3,    4,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::Bool,    9,
 
        0        // eod
 };
@@ -87,6 +92,7 @@ void canDeviceProtocol::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
         case 1: _t->dataReceivedFromDeviceCan((*reinterpret_cast< ushort(*)>(_a[1])),(*reinterpret_cast< QByteArray(*)>(_a[2]))); break;
         case 2: _t->rxFromDeviceCan((*reinterpret_cast< ushort(*)>(_a[1])),(*reinterpret_cast< QByteArray(*)>(_a[2]))); break;
         case 3: _t->deviceTmoEvent(); break;
+        case 4: _t->canDriverConnectionStatus((*reinterpret_cast< bool(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -116,7 +122,7 @@ const QMetaObject canDeviceProtocol::staticMetaObject = { {
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_canDeviceProtocol_t
 , QtPrivate::TypeAndForceComplete<canDeviceProtocol, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<ushort, std::false_type>, QtPrivate::TypeAndForceComplete<QByteArray, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<ushort, std::false_type>, QtPrivate::TypeAndForceComplete<QByteArray, std::false_type>
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<ushort, std::false_type>, QtPrivate::TypeAndForceComplete<QByteArray, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<ushort, std::false_type>, QtPrivate::TypeAndForceComplete<QByteArray, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>
 
 
 >,
@@ -143,13 +149,13 @@ int canDeviceProtocol::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 4)
+        if (_id < 5)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 5;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 4)
+        if (_id < 5)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 4;
+        _id -= 5;
     }
     return _id;
 }
