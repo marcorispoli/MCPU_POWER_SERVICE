@@ -62,10 +62,7 @@ namespace Application
     static const unsigned short APP_MAJ_REV = 0;
     static const unsigned short APP_MIN_REV = 0;
     static const unsigned short APP_SUB_REV = 1;
-
-   static const char*           IP_CAN_ADDRESS = "127.0.0.1"; //!< Can Client Server IP address
-   static const unsigned short  CAN_PORT = 10001; //!< Can Client Server Port
-   static const unsigned char   DEVICE_ID = 0x1; //!< Power Service Can Device ID
+    static const unsigned char  DEVICE_ID = 0x1; //!< Power Service Can Device ID
 }
 
 
