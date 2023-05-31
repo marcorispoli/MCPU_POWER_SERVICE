@@ -60,8 +60,8 @@
 namespace Application
 {
     static const unsigned short APP_MAJ_REV = 0;
-    static const unsigned short APP_MIN_REV = 0;
-    static const unsigned short APP_SUB_REV = 1;
+    static const unsigned short APP_MIN_REV = 1;
+    static const unsigned short APP_SUB_REV = 0;
     static const unsigned char  DEVICE_ID = 0x1; //!< Power Service Can Device ID
 }
 
