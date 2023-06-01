@@ -29,9 +29,6 @@ public:
         _WORKFLOW_BOOTLOADER,
     }PROTOCOL_WORKFLOW_e;
 
-    void connectDevice(void){
-
-    }
 
     typedef enum{
         STATUS_SYSTEM = 0,
@@ -80,7 +77,7 @@ public:
 
 
     // Protocol commands
-    inline void requestBootloaderActivation(void) {if(bootloaderPresent) execCmd = ACTIVATE_BOOTLOADER;}
+    inline void requestBootloaderActivation(void) {if(isBootloaderPresent()) execCmd = ACTIVATE_BOOTLOADER;}
     inline void requestSoftPowerOff(void){execCmd = EXECUTE_POWER_ON_OFF;};
     inline void requestAbort(void){abortCmd = true;};
     void requestArm(int16_t cAng){
@@ -101,6 +98,8 @@ public:
         else deviceDataRegisters[idx].d[data] = b;
     };
 
+    // Board initialization API
+    void boardInitialize(void);
 
 signals:
 
@@ -129,7 +128,7 @@ private:
     uchar subWorkflow;
     uchar sequence;
     bool  rxOk;
-    bool bootloaderPresent;
+
 
 
 
