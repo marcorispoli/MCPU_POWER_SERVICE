@@ -114,6 +114,7 @@ public:
     QLabel *label_28;
     QPushButton *armButton;
     QPushButton *bootloaderButton;
+    QPushButton *initButton;
 
     void setupUi(QWidget *debugWindow)
     {
@@ -613,6 +614,14 @@ public:
 "color: rgb(255, 255, 255);\n"
 "border-width: 0px;\n"
 ""));
+        initButton = new QPushButton(mainFrame);
+        initButton->setObjectName(QString::fromUtf8("initButton"));
+        initButton->setGeometry(QRect(800, 80, 111, 31));
+        initButton->setFont(font2);
+        initButton->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 0, 127);\n"
+"color: rgb(255, 255, 255);\n"
+"border-width: 0px;\n"
+""));
 
         retranslateUi(debugWindow);
 
@@ -707,6 +716,7 @@ public:
         label_28->setText(QCoreApplication::translate("debugWindow", "POS", nullptr));
         armButton->setText(QCoreApplication::translate("debugWindow", "ARM", nullptr));
         bootloaderButton->setText(QCoreApplication::translate("debugWindow", "BOOTLOADER", nullptr));
+        initButton->setText(QCoreApplication::translate("debugWindow", "INITIALIZE", nullptr));
     } // retranslateUi
 
 };

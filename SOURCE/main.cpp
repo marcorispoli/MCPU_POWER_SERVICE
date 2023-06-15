@@ -26,9 +26,16 @@ int main(int argc, char *argv[])
     appLog(argc, argv, "C:\\OEM\\Gantry\\Log\\mcpu_powerservice.log", debugWindow::debugMessageHandler);
 
 
+    // Open the system configuration file
+    SYSCONFIG = new sysConfig(configFile::_CFG_READONLY);
+    if(!SYSCONFIG->isFormatCorrect()) {
+        qDebug() << " WRONG CONFIGURATION FILE FORMAT!";
+        exit(1);
+    }
+
     // Open the application config file
     CONFIG = new boardConfig();
-    SYSCONFIG = new sysConfig();
+
 
     // Initialize the WINDOW to nullptr so that in case of Operating mode
     // the application skips the WINDOW callbacks

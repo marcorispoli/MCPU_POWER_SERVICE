@@ -22,6 +22,8 @@ debugWindow::debugWindow(QWidget *parent)
     connect(ui->armButton, SIGNAL(pressed()), this, SLOT(onArmButton()), Qt::UniqueConnection);
     connect(ui->bootloaderButton, SIGNAL(pressed()), this, SLOT(onBootloaderButton()), Qt::UniqueConnection);
 
+    connect(ui->initButton, SIGNAL(pressed()), this, SLOT(onInitButton()), Qt::UniqueConnection);
+
     pollingTimer  = startTimer(500);
 
 }
@@ -65,6 +67,10 @@ void debugWindow::onLogClearButton(void){
 void debugWindow::onDebugClearButton(void){
     ui->debugText->appendPlainText("");
     ui->debugText->clear();
+}
+void debugWindow::onInitButton(void){
+   PROTOCOL->boardInitialize();
+
 }
 
 

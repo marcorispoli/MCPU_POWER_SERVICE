@@ -44,6 +44,8 @@ signals:
 // GUI MODULE SLOTS
 public slots:
 
+    void onInitButton(void);
+
     void onDebugClearButton(void);
     void onLogClearButton(void);
     void onSoftPoffButton(void);
